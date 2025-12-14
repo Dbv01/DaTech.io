@@ -1,0 +1,195 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Корзина</h3>
+        <button class="modal-close" onclick="closeModal('cart-modal')">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+        <div id="cart-content">
+            <!-- Товары в корзине будут добавлены через JS -->
+        </div>
+    </div>
+    
+    <div class="cart-summary">
+        <div class="summary-row">
+            <span>Товары:</span>
+            <span id="cart-subtotal">0 ₽</span>
+        </div>
+        <div class="summary-row">
+            <span>Доставка:</span>
+            <span id="delivery-cost">Бесплатно</span>
+        </div>
+        <div class="summary-row summary-total">
+            <span>Итого:</span>
+            <span id="cart-total">0 ₽</span>
+        </div>
+        
+        <button class="btn btn-primary" onclick="openCheckoutModal()" style="width: 100%; margin-top: 25px;">
+            <i class="fas fa-credit-card"></i> Оформить заказ
+        </button>
+    </div>
+</div>
+
+<style>
+    .cart-summary {
+        padding: 25px;
+        background: var(--light);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+    
+    .cart-summary:not(:empty) {
+        display: block;
+    }
+    
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+    
+    .summary-total {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    #cart-content .empty-state {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    #cart-content .empty-icon {
+        font-size: 60px;
+        color: var(--light-dark);
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+    
+    #cart-content .empty-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--dark);
+    }
+    
+    #cart-content .empty-description {
+        color: var(--gray);
+        margin-bottom: 25px;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        gap: 15px;
+    }
+    
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+    
+    .cart-item-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        background: var(--light);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: var(--accent);
+    }
+    
+    .cart-item-info {
+        flex: 1;
+    }
+    
+    .cart-item-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--dark);
+    }
+    
+    .cart-item-price {
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    
+    .cart-item-controls {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--light);
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+    }
+    
+    .quantity-btn {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--dark);
+        font-size: 18px;
+        border-radius: 6px;
+        transition: var(--transition-fast);
+    }
+    
+    .quantity-btn:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .quantity-value {
+        font-weight: 600;
+        min-width: 25px;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .cart-item-remove {
+        width: 40px;
+        height: 40px;
+        background: var(--light);
+        border: none;
+        border-radius: var(--radius-sm);
+        color: var(--gray);
+        cursor: pointer;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cart-item-remove:hover {
+        background: var(--danger);
+        color: white;
+        transform: rotate(90deg);
+    }
+</style>
