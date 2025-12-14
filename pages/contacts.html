@@ -60,4 +60,244 @@
                 <strong>Zoom / Google Meet</strong>
                 <p>По предварительной записи</p>
             </div>
-            <button class="btn btn-primary" onclick="showNotification('Запишитесь на консультацию в Telegram @daab17', '
+            <button class="btn btn-primary" onclick="showNotification('Запишитесь на консультацию в Telegram @daab17', 'info')" style="width: 100%; margin-top: 20px;">
+                <i class="fas fa-calendar-check"></i> Записаться
+            </button>
+        </div>
+    </div>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>FAQ</h2>
+                <p>Часто задаваемые вопросы</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Какой срок доставки?</h3>
+                    <p>Доставляем по Москве за 1 день, по России — 1-3 дня. Есть экспресс-доставка в день заказа.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Есть ли гарантия?</h3>
+                    <p>Да, на все товары 2 года гарантии. Плюс бесплатная диагностика в течение первого года.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Можно ли вернуть товар?</h3>
+                    <p>Да, 30 дней на возврат без объяснения причин, если товар не был в использовании.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Есть рассрочка?</h3>
+                    <p>Да, сотрудничаем с банками для оформления рассрочки на 3-12 месяцев.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Как происходит оплата?</h3>
+                    <p>Картой онлайн, наличными при получении, по счету для юридических лиц.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Можно ли заказать товар которого нет в наличии?</h3>
+                    <p>Да, мы можем заказать для вас любой актуальный гаджет в течение 3-7 дней.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background: var(--light); border-radius: var(--radius);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши соцсети</h2>
+                <p>Подпишитесь на новости и обзоры</p>
+            </div>
+            
+            <div class="social-grid">
+                <a href="https://t.me/datech_news" target="_blank" class="social-card">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #0088cc, #00a8ff);">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram канал</h3>
+                    <p>Новинки, обзоры, скидки</p>
+                </a>
+                
+                <a href="#" class="social-card" onclick="showNotification('Instagram: @datech_shop', 'info')">
+                    <div class="social-icon" style="background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Обзоры в сторис, фото гаджетов</p>
+                </a>
+                
+                <a href="#" class="social-card" onclick="showNotification('YouTube: DaTech Reviews', 'info')">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #FF0000, #FF4D4D);">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Видеообзоры, распаковки</p>
+                </a>
+                
+                <a href="#" class="social-card" onclick="showNotification('VK: vk.com/datech', 'info')">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #4C75A3, #5B88BD);">
+                        <i class="fab fa-vk"></i>
+                    </div>
+                    <h3>ВКонтакте</h3>
+                    <p>Сообщество, обсуждения</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .contacts-page {
+        max-width: 1200px;
+    }
+    
+    .contacts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin: 60px 0;
+    }
+    
+    .contact-card {
+        background: white;
+        padding: 35px 30px;
+        border-radius: var(--radius);
+        text-align: center;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .contact-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-heavy);
+    }
+    
+    .contact-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--accent-gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 36px;
+        margin: 0 auto 25px;
+    }
+    
+    .contact-card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: var(--dark);
+    }
+    
+    .contact-card > p {
+        color: var(--gray);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+    
+    .contact-info {
+        margin-bottom: 20px;
+    }
+    
+    .contact-info strong {
+        display: block;
+        font-size: 18px;
+        color: var(--dark);
+        margin-bottom: 5px;
+    }
+    
+    .contact-info p {
+        color: var(--gray);
+        font-size: 14px;
+    }
+    
+    .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    
+    .faq-item {
+        background: white;
+        padding: 30px;
+        border-radius: var(--radius);
+        transition: var(--transition);
+        border-left: 4px solid var(--accent);
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+    }
+    
+    .faq-item h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--dark);
+    }
+    
+    .faq-item p {
+        color: var(--gray);
+        line-height: 1.6;
+    }
+    
+    .social-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin-top: 50px;
+    }
+    
+    .social-card {
+        background: white;
+        padding: 30px 25px;
+        border-radius: var(--radius);
+        text-align: center;
+        transition: var(--transition);
+        text-decoration: none;
+        border: 2px solid transparent;
+    }
+    
+    .social-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-heavy);
+        text-decoration: none;
+    }
+    
+    .social-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 32px;
+        margin: 0 auto 20px;
+    }
+    
+    .social-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: var(--dark);
+    }
+    
+    .social-card p {
+        color: var(--gray);
+        font-size: 14px;
+    }
+</style>
