@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaTech | Премиум электроника и гаджеты</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo" onclick="showPage('home')">
+                    <div class="logo-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    DaTech
+                </div>
+                
+                <div class="nav-links">
+                    <div class="nav-link active" onclick="showPage('home')">Главная</div>
+                    <div class="nav-link" onclick="showPage('catalog')">Каталог</div>
+                    <div class="nav-link" onclick="showPage('about')">О компании</div>
+                    <div class="nav-link" onclick="showPage('contacts')">Контакты</div>
+                    <div class="nav-link" onclick="showPage('blog')">Блог</div>
+                </div>
+                
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="nav-actions">
+                    <div class="user-menu" id="user-section"></div>
+                    <button class="btn-icon" onclick="openCart()">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-nav" id="mobileNav">
+            <div class="nav-link active" onclick="showPage('home'); closeMobileNav()">Главная</div>
+            <div class="nav-link" onclick="showPage('catalog'); closeMobileNav()">Каталог</div>
+            <div class="nav-link" onclick="showPage('about'); closeMobileNav()">О компании</div>
+            <div class="nav-link" onclick="showPage('contacts'); closeMobileNav()">Контакты</div>
+            <div class="nav-link" onclick="showPage('blog'); closeMobileNav()">Блог</div>
+        </div>
+    </nav>
+
+    <!-- СТРАНИЦЫ -->
+    <div id="home" class="page active"></div>
+    <div id="catalog" class="page"></div>
+    <div id="about" class="page"></div>
+    <div id="contacts" class="page"></div>
+    <div id="blog" class="page"></div>
+
+    <!-- ФУТЕР -->
+    <footer></footer>
+
+    <!-- МОДАЛЬНЫЕ ОКНА -->
+    <div id="auth-modal" class="modal auth-modal"></div>
+    <div id="products-modal" class="modal"></div>
+    <div id="cart-modal" class="modal cart-modal"></div>
+    <div id="checkout-modal" class="modal"></div>
+    <div id="notification" class="notification"></div>
+
+    <!-- ЗАГРУЗКА КОМПОНЕНТОВ -->
+    <script>
+        // Загружаем компоненты асинхронно
+        async function loadComponents() {
+            try {
+                // Загружаем страницы
+                const pages = ['home', 'catalog', 'about', 'contacts', 'blog'];
+                for (const page of pages) {
+                    const response = await fetch(`pages/${page}.html`);
+                    const content = await response.text();
+                    document.getElementById(page).innerHTML = content;
+                }
+                
+                // Загружаем футер
+                const footerResponse = await fetch('components/footer.html');
+                document.querySelector('footer').innerHTML = await footerResponse.text();
+                
+                // Загружаем модальные окна
+                const modals = ['auth-modal', 'products-modal', 'cart-modal', 'checkout-modal'];
+                for (const modal of modals) {
+                    const response = await fetch(`components/${modal}.html`);
+                    document.getElementById(modal).innerHTML = await response.text();
+                }
+                
+                // Инициализируем приложение
+                initializeApp();
+            } catch (error) {
+                console.error('Ошибка загрузки компонентов:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+    
+    <!-- ОСНОВНОЙ JS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
