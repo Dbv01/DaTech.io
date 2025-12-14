@@ -1,0 +1,174 @@
+<div class="container catalog-page">
+    <div class="page-header">
+        <h1>Каталог гаджетов</h1>
+        <p>Более 250 товаров в 12 категориях. Техника 2024-2025 года</p>
+        
+        <div class="search-bar" style="max-width: 600px; margin: 40px auto;">
+            <input type="text" id="search-input" placeholder="Поиск по товарам..." 
+                   onkeyup="searchProducts()" style="width: 100%;">
+        </div>
+    </div>
+    
+    <div class="categories-grid" id="catalog-categories">
+        <div class="category-card" onclick="openProductsModal('smartphones')">
+            <div class="category-icon">📱</div>
+            <div class="category-title">Смартфоны</div>
+            <p class="category-description">Apple iPhone, Samsung Galaxy, Xiaomi, Google Pixel</p>
+            <div class="category-count">28 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('laptops')">
+            <div class="category-icon">💻</div>
+            <div class="category-title">Ноутбуки</div>
+            <p class="category-description">MacBook, игровые, ультрабуки, 2-в-1</p>
+            <div class="category-count">15 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('tablets')">
+            <div class="category-icon">📱</div>
+            <div class="category-title">Планшеты</div>
+            <p class="category-description">iPad, Samsung Tab, графические планшеты</p>
+            <div class="category-count">12 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('audio')">
+            <div class="category-icon">🎧</div>
+            <div class="category-title">Аудиотехника</div>
+            <p class="category-description">Наушники, колонки, саундбары</p>
+            <div class="category-count">36 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('smart_home')">
+            <div class="category-icon">🏠</div>
+            <div class="category-title">Умный дом</div>
+            <p class="category-description">Умные колонки, лампы, камеры, розетки</p>
+            <div class="category-count">42 товара</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('wearables')">
+            <div class="category-icon">⌚</div>
+            <div class="category-title">Носимая электроника</div>
+            <p class="category-description">Умные часы, фитнес-браслеты, AR-очки</p>
+            <div class="category-count">18 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('gaming')">
+            <div class="category-icon">🎮</div>
+            <div class="category-title">Гейминг</div>
+            <p class="category-description">Игровые ПК, консоли, аксессуары</p>
+            <div class="category-count">24 товара</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('photo_video')">
+            <div class="category-icon">📸</div>
+            <div class="category-title">Фото и Видео</div>
+            <p class="category-description">Камеры, объективы, дроны, экшн-камеры</p>
+            <div class="category-count">31 товар</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('tv')">
+            <div class="category-icon">📺</div>
+            <div class="category-title">Телевизоры</div>
+            <p class="category-description">4K/8K OLED, QLED, игровые телевизоры</p>
+            <div class="category-count">14 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('office')">
+            <div class="category-icon">🖨️</div>
+            <div class="category-title">Офисная техника</div>
+            <p class="category-description">Принтеры, мониторы, клавиатуры, мыши</p>
+            <div class="category-count">27 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('accessories')">
+            <div class="category-icon">🔌</div>
+            <div class="category-title">Аксессуары</div>
+            <p class="category-description">Чехлы, зарядки, кабели, power bank</p>
+            <div class="category-count">89 товаров</div>
+        </div>
+        
+        <div class="category-card" onclick="openProductsModal('drones')">
+            <div class="category-icon">🚁</div>
+            <div class="category-title">Дроны</div>
+            <p class="category-description">DJI, FPV дроны, камеры для съемки</p>
+            <div class="category-count">8 товаров</div>
+        </div>
+    </div>
+    
+    <div class="section-title" style="margin-top: 80px;">
+        <h2>Все товары</h2>
+        <p>Сортировать по: 
+            <select id="sort-select" onchange="sortProducts()" style="padding: 8px 15px; border-radius: 8px; border: 1px solid var(--light-dark); margin-left: 10px;">
+                <option value="popular">Популярности</option>
+                <option value="price_asc">Цена (по возрастанию)</option>
+                <option value="price_desc">Цена (по убыванию)</option>
+                <option value="new">Новинки</option>
+                <option value="rating">Рейтингу</option>
+            </select>
+        </p>
+    </div>
+    
+    <div class="products-grid" id="all-products">
+        <!-- Все товары загрузятся через JS -->
+    </div>
+    
+    <div id="load-more-container" style="text-align: center; margin: 50px 0;">
+        <button class="btn btn-primary btn-lg" onclick="loadMoreProducts()" id="load-more-btn">
+            <i class="fas fa-spinner"></i> Показать еще товары
+        </button>
+    </div>
+</div>
+
+<style>
+    .catalog-page {
+        padding-top: 120px;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .page-header h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: var(--dark);
+        line-height: 1.1;
+    }
+    
+    .page-header p {
+        font-size: 18px;
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .search-bar {
+        position: relative;
+    }
+    
+    .search-bar input {
+        width: 100%;
+        padding: 18px 25px 18px 50px;
+        background: white;
+        border: 2px solid var(--light-dark);
+        border-radius: var(--radius-lg);
+        font-size: 16px;
+        transition: var(--transition);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2386868B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: 20px center;
+        background-size: 20px;
+    }
+    
+    .search-bar input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+    }
+    
+    .search-bar input::placeholder {
+        color: var(--gray);
+    }
+</style>
