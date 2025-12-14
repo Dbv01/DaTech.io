@@ -1,0 +1,16 @@
+{
+  "name": "datech",
+  "version": "1.0.0",
+  "description": "Интернет-магазин электроники",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "echo 'Откройте index.html в браузере для разработки'",
+    "deploy": "npm run build && echo 'Скопируйте содержимое папки dist на GitHub Pages'"
+  },
+  "keywords": ["electronics", "ecommerce", "gadgets"],
+  "author": "DaTech",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
